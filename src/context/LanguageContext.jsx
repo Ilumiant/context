@@ -2,36 +2,27 @@ import { createContext, useState } from "react";
 
 const LanguageContext = createContext();
 
-const es = {
-  hello: 'Hola',
-  world: 'Mundo',
-  title: 'Título',
-  changeLanguage: 'Cambiar idioma'
-}
-
-const en = {
-  hello: 'Hello',
-  world: 'World',
-  title: 'Title',
-  changeLanguage: 'Change language'
-}
-
 export const LanguageContextProvider = ({children}) => {
 
-  const [lang, setLang] = useState(en)
+  const [langs, setLangs] = useState([])
+  const [lang, setLang] = useState({})
 
-  const changeLang = (language = 'es') => {
-    if (language.toLowerCase() === 'en') {
-      setLang(en)
-    } else if(language.toLowerCase() === 'es') {
-      setLang(es)
-    } else {
-      setLang(en)
-    }
+  const changeLang = (language) => {
+    const langToChange = langs.find(lang => lang[0] === language.toLowerCase())
+
+    if (langToChange) setLang(langToChange[1])
+    else setLang(langs[0][1])
+  }
+
+  const registerLangs = (...params) => {
+    setLangs(params)
+    setLang(params[0][1])
   }
 
   return (
-    <LanguageContext.Provider value={{ lang, changeLang }}>
+    <LanguageContext.Provider value={{ 
+      lang, changeLang, registerLangs
+    }}>
       {children}
     </LanguageContext.Provider>
   )
