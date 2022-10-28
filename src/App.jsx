@@ -6,15 +6,13 @@ function App() {
   const { theme, toggleTheme } = useContext(ThemeContext)
 
   return (
-    <div className={`container ${ theme === 'light' ? 'bg-light' : 'bg-dark' }`}>
+    <div className={`container bg-${theme}`}>
       <button
-        className={theme === 'light' ? 'bg-dark text-dark' : 'bg-light text-light'}
-        onClick={() => {
-          toggleTheme()
-        }}
-      >{theme === 'light' ? 'Modo oscuro' : 'Modo claro'}</button>
+        className={`bg-${theme} text-${theme} border-${theme}`}
+        onClick={() => toggleTheme()}
+      >Modo {theme === 'light' ? 'oscuro' : 'claro'}</button>
       <h1
-        className={theme === 'light' ? 'text-light' : 'text-dark'}
+        className={`text-${theme}`}
       >Example</h1>
     </div>
   )

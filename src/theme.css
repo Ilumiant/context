@@ -23,3 +23,11 @@
 .text-dark {
   color: var(--light);
 }
+
+.border-light {
+  border-color: var(--dark);
+}
+
+.border-dark {
+  border-color: var(--light);
+}
