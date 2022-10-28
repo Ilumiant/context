@@ -1,0 +1,25 @@
+:root {
+  --dark: #212121;
+  --light: white;
+}
+
+.container {
+  height: 100vh;
+  padding: 10px;
+}
+
+.bg-light {
+  background-color: var(--light);
+}
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.text-light {
+  color: var(--dark);
+}
+
+.text-dark {
+  color: var(--light);
+}
